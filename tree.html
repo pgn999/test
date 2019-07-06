@@ -1,0 +1,34 @@
+<script>
+var ar = [
+  {
+    "id": 1,
+    "pid": null
+  },
+  {
+  	"id": 2,
+  	"pid": 1
+  }
+];
+var root = [];
+
+for(var i=0;i<ar.length;i++){
+  var node = ar[i];
+  var pnode = null;
+  for(var j=0;j<ar.length;j++){//find parent
+    var _node = ar[j];
+    if(node.pid == _node.id){
+      pnode = _node;
+      break;
+    }
+  }
+  
+  if(pnode){//push to parent
+    if(!pnode.child)pnode.child = [];
+  	pnode.child.push(node);
+  }else{
+    root.push(node);
+  }
+}
+
+console.log(JSON.stringify(root));
+</script>
